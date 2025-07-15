@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Compression - SmartDocs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header class="glass-header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-file-alt"></i>
+                    <span>SmartDocs</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="convert.html">Convert</a></li>
+                    <li><a href="compress.html" class="active">Compress</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="theme-controls">
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="theme-colors">
+                        <button class="theme-color blue active" data-color="blue"></button>
+                        <button class="theme-color purple" data-color="purple"></button>
+                        <button class="theme-color green" data-color="green"></button>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="compressor-page">
+        <div class="container">
+            <h1 class="page-title">File Compression Tools</h1>
+            <p class="page-subtitle">Reduce file sizes without compromising quality</p>
+            
+            <div class="compressor-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="image-compress">
+                        <i class="fas fa-file-image"></i> Image Compressor
+                    </button>
+                    <button class="tab-button" data-tab="pdf-compress">
+                        <i class="fas fa-file-pdf"></i> PDF Compressor
+                    </button>
+                </div>
+                
+                <div class="tab-content active" id="image-compress">
+                    <div class="compressor-container">
+                        <div class="drop-zone" id="image-drop-zone">
+                            <i class="fas fa-file-image"></i>
+                            <h3>Drag & Drop Image File Here</h3>
+                            <p>or</p>
+                            <button class="btn btn-primary" id="image-upload-btn">Select File</button>
+                            <input type="file" id="image-file-input" accept="image/jpeg, image/png, image/webp" style="display: none;">
+                        </div>
+                        <div class="file-info" id="image-file-info" style="display: none;">
+                            <div class="file-preview-container">
+                                <div class="file-preview">
+                                    <img id="image-preview" src="#" alt="Preview">
+                                    <div class="file-details">
+                                        <span class="file-name" id="image-file-name"></span>
+                                        <span class="file-size" id="image-file-size"></span>
+                                        <span class="file-dimensions" id="image-file-dimensions"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compression-options">
+                                <div class="option-group">
+                                    <label for="image-quality">Quality:</label>
+                                    <input type="range" id="image-quality" min="0.1" max="1" step="0.1" value="0.8">
+                                    <span id="image-quality-value">80%</span>
+                                </div>
+                                <div class="option-group">
+                                    <label for="image-max-width">Max Width (px):</label>
+                                    <input type="number" id="image-max-width" placeholder="Original" min="100">
+                                </div>
+                                <div class="option-group">
+                                    <label for="image-max-height">Max Height (px):</label>
+                                    <input type="number" id="image-max-height" placeholder="Original" min="100">
+                                </div>
+                                <div class="option-group">
+                                    <label for="image-format">Output Format:</label>
+                                    <select id="image-format">
+                                        <option value="original">Original</option>
+                                        <option value="jpeg">JPEG</option>
+                                        <option value="png">PNG</option>
+                                        <option value="webp">WebP</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-compress" id="image-compress-btn">
+                                <i class="fas fa-compress-alt"></i> Compress Image
+                            </button>
+                        </div>
+                        <div class="compression-result" id="image-result" style="display: none;">
+                            <div class="result-comparison">
+                                <div class="comparison-before">
+                                    <h4>Original</h4>
+                                    <div class="comparison-image">
+                                        <img id="image-original-preview" src="#" alt="Original">
+                                    </div>
+                                    <div class="comparison-stats">
+                                        <span id="image-original-size"></span>
+                                        <span id="image-original-dimensions"></span>
+                                    </div>
+                                </div>
+                                <div class="comparison-after">
+                                    <h4>Compressed</h4>
+                                    <div class="comparison-image">
+                                        <img id="image-compressed-preview" src="#" alt="Compressed">
+                                    </div>
+                                    <div class="comparison-stats">
+                                        <span id="image-compressed-size"></span>
+                                        <span id="image-compressed-dimensions"></span>
+                                        <span id="image-savings"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-download" id="image-download-btn">
+                                <i class="fas fa-download"></i> Download Compressed Image
+                            </button>
+                        </div>
+                    </div>
+                    <div class="compressor-instructions">
+                        <h3><i class="fas fa-info-circle"></i> How to compress images</h3>
+                        <ol>
+                            <li>Drag and drop your image (JPG, PNG, WebP) or click to select a file</li>
+                            <li>Adjust compression settings as needed</li>
+                            <li>Click the "Compress Image" button</li>
+                            <li>Compare the original and compressed versions</li>
+                            <li>Download your compressed image</li>
+                        </ol>
+                        <div class="note">
+                            <strong>Tip:</strong> For best results, try different quality levels to find the right balance between size and quality.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="pdf-compress">
+                    <div class="compressor-container">
+                        <div class="drop-zone" id="pdfc-drop-zone">
+                            <i class="fas fa-file-pdf"></i>
+                            <h3>Drag & Drop PDF File Here</h3>
+                            <p>or</p>
+                            <button class="btn btn-primary" id="pdfc-upload-btn">Select File</button>
+                            <input type="file" id="pdfc-file-input" accept=".pdf" style="display: none;">
+                        </div>
+                        <div class="file-info" id="pdfc-file-info" style="display: none;">
+                            <div class="file-preview">
+                                <i class="fas fa-file-pdf"></i>
+                                <div class="file-details">
+                                    <span class="file-name" id="pdfc-file-name"></span>
+                                    <span class="file-size" id="pdfc-file-size"></span>
+                                    <span class="file-pages" id="pdfc-file-pages"></span>
+                                </div>
+                            </div>
+                            <div class="compression-options">
+                                <div class="option-group">
+                                    <label for="pdf-quality">Compression Level:</label>
+                                    <select id="pdf-quality">
+                                        <option value="low">Low (Faster, Larger)</option>
+                                        <option value="medium" selected>Medium (Balanced)</option>
+                                        <option value="high">High (Slower, Smaller)</option>
+                                    </select>
+                                </div>
+                                <div class="option-group">
+                                    <label for="pdf-remove-metadata">Remove Metadata:</label>
+                                    <input type="checkbox" id="pdf-remove-metadata" checked>
+                                </div>
+                                <div class="option-group">
+                                    <label for="pdf-downsample-images">Downsample Images:</label>
+                                    <input type="checkbox" id="pdf-downsample-images" checked>
+                                </div>
+                            </div>
+                            <button class="btn btn-compress" id="pdfc-compress-btn">
+                                <i class="fas fa-compress-alt"></i> Compress PDF
+                            </button>
+                        </div>
+                        <div class="compression-result" id="pdfc-result" style="display: none;">
+                            <div class="result-comparison">
+                                <div class="comparison-before">
+                                    <h4>Original</h4>
+                                    <div class="comparison-pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="comparison-stats">
+                                        <span id="pdfc-original-size"></span>
+                                        <span id="pdfc-original-pages"></span>
+                                    </div>
+                                </div>
+                                <div class="comparison-after">
+                                    <h4>Compressed</h4>
+                                    <div class="comparison-pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="comparison-stats">
+                                        <span id="pdfc-compressed-size"></span>
+                                        <span id="pdfc-compressed-pages"></span>
+                                        <span id="pdfc-savings"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-download" id="pdfc-download-btn">
+                                <i class="fas fa-download"></i> Download Compressed PDF
+                            </button>
+                        </div>
+                    </div>
+                    <div class="compressor-instructions">
+                        <h3><i class="fas fa-info-circle"></i> How to compress PDFs</h3>
+                        <ol>
+                            <li>Drag and drop your PDF file or click to select a file</li>
+                            <li>Choose your compression options</li>
+                            <li>Click the "Compress PDF" button</li>
+                            <li>Compare the original and compressed versions</li>
+                            <li>Download your compressed PDF</li>
+                        </ol>
+                        <div class="note">
+                            <strong>Note:</strong> Higher compression levels may take longer to process but will produce smaller files.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-file-alt"></i>
+                        <span>SmartDocs</span>
+                    </div>
+                    <p>Your all-in-one document conversion and compression tool.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="convert.html">Convert</a></li>
+                        <li><a href="compress.html">Compress</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SmartDocs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/compressorjs/1.1.1/compressor.min.js"></script>
+    
+    <!-- Internal Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/imageCompressor.js"></script>
+    <script src="js/pdfCompressor.js"></script>
+</body>
+</html>

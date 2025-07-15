@@ -1,0 +1,60 @@
+/* Light Theme (Default) */
+[data-theme="light"] {
+    --primary-color: #4a6bff;
+    --secondary-color: #6c5ce7;
+    --accent-color: #00cec9;
+    --text-color: #2d3436;
+    --text-light: #636e72;
+    --bg-color: #f5f6fa;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --success-color: #00b894;
+    --warning-color: #fdcb6e;
+    --error-color: #d63031;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-color: #4a6bff;
+    --secondary-color: #6c5ce7;
+    --accent-color: #00cec9;
+    --text-color: #f5f6fa;
+    --text-light: #b2bec3;
+    --bg-color: #1e272e;
+    --card-bg: #2d3436;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --success-color: #00b894;
+    --warning-color: #fdcb6e;
+    --error-color: #ff7675;
+}
+
+/* Blue Theme */
+[data-theme="blue"] {
+    --primary-color: #4a6bff;
+    --secondary-color: #0984e3;
+    --accent-color: #00cec9;
+}
+
+/* Purple Theme */
+[data-theme="purple"] {
+    --primary-color: #6c5ce7;
+    --secondary-color: #a55eea;
+    --accent-color: #fd79a8;
+}
+
+/* Green Theme */
+[data-theme="green"] {
+    --primary-color: #00b894;
+    --secondary-color: #00cec9;
+    --accent-color: #55efc4;
+}
+
+/* Theme Transition */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Toggle Icon */
+[data-theme="dark"] .theme-toggle i.fa-moon::before {
+    content: "\f185"; /* Sun icon */
+}
