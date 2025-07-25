@@ -69,7 +69,7 @@
                 <p class="section-subtitle">All processing happens in your browser - your files never leave your device.</p>
                 
                 <div class="tools-grid">
-                    <div class="tool-card" data-tool="docx-pdf">
+                    <a href="convert.html#docx-pdf" class="tool-card" data-tool="docx-pdf">
                         <div class="tool-icon">
                             <i class="fas fa-file-word"></i>
                             <i class="fas fa-arrow-right"></i>
@@ -77,9 +77,9 @@
                         </div>
                         <h3>Word to PDF</h3>
                         <p>Convert DOCX documents to PDF format while preserving formatting.</p>
-                    </div>
+                    </a>
                     
-                    <div class="tool-card" data-tool="pdf-docx">
+                    <a href="convert.html#pdf-docx" class="tool-card" data-tool="pdf-docx">
                         <div class="tool-icon">
                             <i class="fas fa-file-pdf"></i>
                             <i class="fas fa-arrow-right"></i>
@@ -87,27 +87,27 @@
                         </div>
                         <h3>PDF to Word</h3>
                         <p>Extract content from PDFs into editable Word documents.</p>
-                    </div>
+                    </a>
                     
-                    <div class="tool-card" data-tool="image-compress">
+                    <a href="compress.html#image-compress" class="tool-card" data-tool="image-compress">
                         <div class="tool-icon">
                             <i class="fas fa-file-image"></i>
                             <i class="fas fa-compress-alt"></i>
                         </div>
                         <h3>Image Compressor</h3>
                         <p>Reduce image file size without visible quality loss.</p>
-                    </div>
+                    </a>
                     
-                    <div class="tool-card" data-tool="pdf-compress">
+                    <a href="compress.html#pdf-compress" class="tool-card" data-tool="pdf-compress">
                         <div class="tool-icon">
                             <i class="fas fa-file-pdf"></i>
                             <i class="fas fa-compress-alt"></i>
                         </div>
                         <h3>PDF Compressor</h3>
                         <p>Shrink PDF file sizes while maintaining quality.</p>
-                    </div>
+                    </a>
                     
-                    <div class="tool-card" data-tool="ppt-pdf">
+                    <a href="convert.html#ppt-pdf" class="tool-card" data-tool="ppt-pdf">
                         <div class="tool-icon">
                             <i class="fas fa-file-powerpoint"></i>
                             <i class="fas fa-arrow-right"></i>
@@ -115,15 +115,15 @@
                         </div>
                         <h3>PPT to PDF</h3>
                         <p>Convert PowerPoint presentations to PDF documents.</p>
-                    </div>
+                    </a>
                     
-                    <div class="tool-card" data-tool="ppt-keynote">
+                    <a href="convert.html#ppt-keynote" class="tool-card" data-tool="ppt-keynote">
                         <div class="tool-icon">
                             <i class="fas fa-exchange-alt"></i>
                         </div>
                         <h3>PPT ↔ Keynote</h3>
                         <p>Simulate conversion between PowerPoint and Keynote formats.</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -193,5 +193,21 @@
 
     <script src="js/main.js"></script>
     <script src="js/theme-switcher.js"></script>
+    <script>
+        // Ensure tool cards maintain their styling as links
+        document.addEventListener('DOMContentLoaded', function() {
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
